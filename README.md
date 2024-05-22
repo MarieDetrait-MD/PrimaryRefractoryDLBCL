@@ -1,2 +1,2 @@
 # PrimaryRefractoryDLBCL
-A Machine Learning Approach for predicting primary refractory disease in DLBCL patients 
+A Machine Learning approach for predicting primary refractory disease in DLBCL patients. 
