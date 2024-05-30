@@ -1,1 +1,90 @@
+Protocole en français 
+
+Etude rétrospective de la cohorte des patients porteurs d’un lymphome B diffus à grandes cellules entre 2017 et 2022 au GHdC dans le but de mettre en évidence les caractéristiques liées à un état réfractaire primaire du lymphome et d’objectiver la faisabilité de construire un outil d’aide à la décision médicale permettant de prédire cet état en lui associant une probabilité.  
+
+Étude conjointe des services DTSI-IT et d’hématologie clinique du Grand Hôpital de Charleroi
+Investigateurs principaux : Dr Marie Detrait et Dr Delphine Pranger 
+
+Contexte: Le lymphome B diffus à grandes cellules (LBDGC) est le lymphome agressif le plus fréquent dans la population adulte, il représente 30 à 40 % de tous les lymphomes non Hodgkiniens (LNH) (1). Le traitement standard par immuno-chimiothérapie (R-CHOP) permet d’obtenir 60-70% de rémission, toutefois 30 à 40% des patients selon les études sont réfractaires ou rechutent rapidement dans les 6 premiers mois (1-4). Leur pronostic n’est pas bon toutefois l’émergence de thérapies novatrices comme les thérapies ciblées et l’immunothérapie comme la thérapie par CAR-T cell (chimeric Ag receptor T-Cell ) viennent à l’heure actuelle donner un espoir thérapeutique à ces patients (1-4). L’état réfractaire est actuellement encore assez peu compris. On lui associe des anomalies génétiques tumorales, des altérations dans le micro-environnement tumoral ; des facteurs liés au patient comme des comorbidités influencent aussi les résultats du traitement (1-4). 
+L’intelligence artificielle comprend l’apprentissage automatique supervisé celui qui nous intéresse dans cette étude car il permet de prédire des résultats, il est basé sur les mathématiques et les méthodes statistiques. Le modèle reçoit dans un premier temps un ensemble de données d’apprentissage avec les variables et le résultat que l’on souhaite étudier pour chaque observation ou patient et par la suite, il sera capable d’estimer le résultat, basé sur les mêmes données que celles utilisées lors de l’entraînement. La tâche peut être automatisée et répétée. Une application sur le Web (ou application portable) avec l’algorithme ou les algorithmes les plus performants pourra ensuite être rendue disponible (5-7). En hématologie, on trouve ainsi des algorithmes qui peuvent estimer le risque de réaction du greffon contre l’hôte aigüe après une allogreffe ou le risque de rechute d’une leucémie aigüe lymphoblastique ou encore le risque de développer une complication grave lors d’un traitement intensif (8).  
+Dans le cadre des LNH B diffus à grandes cellules, Il existe un outil pour calculer la survie des patients (outil pronostic basé sur des statistiques basées sur des modèles de COX) avec une maladie progressive (maladie en rechute ou réfractaire à la première ligne de traitement). Cet outil est disponible en ligne et basé sur l’étude de Maurer et al. (9). 
+Il n’y a par contre à notre connaissance aucun modèle à ce jour capable de donner une probabilité d’état réfractaire primaire d’un LNH B diffus à grandes cellules basé sur les variables disponibles au diagnostic et la réalisation d’une tomographie à émissions de positrons (TEP) après 2 cycles de traitement.  
+
+Localisation de l’étude
+L’étude est monocentrique au Grand Hôpital de Charleroi, à Charleroi, Belgique et concerne les patients pris en charge dans le service d’hématologie entre janvier 2017 et décembre 2022. 
+
+Type d’étude 
+Étude rétrospective monocentrique non interventionnelle
+
+Objectif primaire : faisabilité de créer un outil d’aide à la décision médicale par apprentissage automatique supervisé permettant de donner une probabilité de l’état réfractaire à la première ligne de traitement chez les patients porteurs d’un LNH B diffus à grandes cellules 
+
+Objectifs secondaires :
+- calculer le taux de survie global au terme de l’étude 
+- étudier les facteurs de risque de l’état réfractaire du LNH B diffus à grandes cellules 
+- établir la courbe de survie et de survie sans progression ‘PFS’ de la cohorte
+
+Critères de participation 
+Tous les patients âgés de plus de 18 ans, pris en charge dans le service d’hématologie au GHdC entre janvier 2017 et décembre 2022, porteurs d’un LBDGC pour la première fois et non encore traités. Les patients qui ont souhaités être traités dans un autre hôpital après le diagnostic réalisé au GHdc seront exclus.  
+
+Collaborateurs et investigateurs 
+Idée et conception du projet : Dr D. Pranger et Dr M. Detrait 
+Les médecins du service d’hématologie et la CSO Mme De Prophetis qui prennent en charge les patients, Stéphanie Warnon attachée de recherche clinique qui réalisera l’extraction des données. La directrice de la recherche, Aline Gillain, participe également à la recherche en apportant un support documentaire et légal. 
+L’analyse statistique et le développement informatique des modèles seront réalisés par le Dr Marie Detrait. 
+
+Méthode:  
+
+Plan de l’étude 
+L’extraction des données sera effectuée à partir de la base de données du département d’onco-hématologie (Logiciel Filemaker) qui permet l’envoi des données en lien avec les pathologies malignes au Registre du Cancer. Le nombre de patients concerné a déjà été calculé et il est de 130 ce qui permet d’envisager une étude avec des résultats fiables. La liste des variables à extraire a été établie avec le Dr D. Pranger (elle est disponible sur demande auprès du Dr Detrait). Le Logiciel Filemaker permet une extraction dans un format Excel.
+Après la fin du recueil des données et la vérification de la qualité des données, les données des patients seront complètement anonymisées dans le but de constituer un ensemble d’entraînement et de validation pour l’apprentissage automatique. Il ne sera plus possible d’identifier les patients. Par définition, les données ne seront donc plus des données à caractère personnel.   
+Le traitement statistique comportera une analyse statistique descriptive, une analyse univariée (variables et cible : état réfractaire primaire) complétée par un modèle de régression de Cox pour étudier l’état réfractaire primaire) ainsi qu’une matrice de corrélation pour éviter la redondance des informations pour les modèles d’apprentissage automatique. 
+
+RGPD et éthique : 
+Le projet a été discuté avec la DPO Mme Ndumbi qui assimile ce projet à une étude rétrospective d’une cohorte du GHdC nécessitant l’approbation du Comité d’Ethique de l’hôpital. Le déroulement de la recherche se conforme à la déclaration d’Helsinki et le protocole sera soumis au Comité d’Ethique du GHdC pour approbation. 
+Le jeu de données étant complètement anonymisé et les données ne quittant pas le Grand Hôpital de Charleroi (GHdC), un formulaire de consentement spécifique pour les patients n’est pas requis. 
+
+PoC 
+Cette étude sera réalisée selon le modèle d’un "Proof of concept" ou PoC soit un projet pilote qui doit fonctionner à un moment 't'  et qui doit permettre la démonstration de faisabilité du concept.
+Le métier : les hématologistes. 
+
+Environnement de développement et langage :  Anaconda avec des ‘Jupiter Notebook’, environnement habituellement utilisé en ‘Data analyse’ ou analyse des données, le langage de programmation sera Python version 3.9.13 et ses bibliothèques : Pandas, Numpy, Scikit Learn, Lifelines, Scipy stat, seaborn et Pingouin. La visualisation sera assurée par les bibliothèques Matplotlib et Seaborn. 
+Le code sera disponible auprès du Docteur Detrait sur requête raisonnable, le dataset ou ensemble des données anonymisé ne sera pas partagé, restera strictement confidentiel et sera conservé par le Dr Detrait en un lieu sécurisé.  
+
+Etapes : 
+1.	Le fichier Excel avec toutes les variables sera traité avec Pandas dans un "dataframe" et on l’appellera le dataset ou ensemble de données.
+2.	L’évolution du projet sera documenté dans notre outil institutionnel Confluence. 
+3.	Analyse et préparation du dataset avec Pandas et Numpy : validation sémantique des données dans le but de s'assurer de la qualité des données, détection des données manquantes, détection des valeurs extrêmes ou aberrantes et déséquilibre de classe à prendre en compte si présent, ensuite validation statistique des données ; 
+4.	Statistiques (10) :  statistiques descriptives sur les champs, analyse croisée et visualisation avec des graphiques ; analyse univariée (variable vs cible (état réfractaire) avec test de chi-carré, Kruskall Walllis ou Anova selon le type de variables) et multivariée (modèle de régression de COX et autres selon les besoins) ; courbes de survie et de survie sans progression avec la méthode de Kaplan Meier. Les statistiques permettront de répondre aux questions secondaires et d’analyser le profil de risque des patients réfractaires primaires. 
+5.	Une matrice de corrélation sera réalisée pour éviter les données redondantes dans le cadre de l’apprentissage automatique. Au terme de ces étapes : nous aurons la carte d'identité de l'ensemble de données (description, taille, formatage, description métier des données), la description des champs et l'analyse statistique de chaque champ. Le traitement des données manquantes sera clairement indiqué ainsi que toute suppression, fusion, création de nouvelles colonnes si cela est réalisé.
+6.	Préparation des données pour les algorithmes (Pandas) : nettoyage, formatage des données, normalisation, discrétisation si besoin et préparation des variables catégorielles. Prévoir les pipelines (pdpipe ou scikit learn selon les algorithmes) selon les besoins (traitement des variables quantitatives continues et des variables catégorielles), la préparation des variables catégorielles est différente d'un algorithme à l'autre, le traitement réalisé sera clairement indiqué pour chaque algorithme et disponible dans les Jupiter Notebook. 
+7.	Diviser l'ensemble des données (75% pour l’entraînement et 25% pour la validation), nous utiliserons la validation croisée avec 'k-fold', pour l'apprentissage et la validation (le nombre de 'fold' sera déterminé en fonction de l'analyse des données, habituellement il est de 10 dans ce type d’étude). 
+8.	Etape de modélisation et d'évaluation des modèles : création des algorithmes d’apprentissage automatique supervisé (scikit learn) : basé sur la littérature et l’expérience disponible en hématologie et d’autres questions de prédiction similaires dans d’autres domaines : un arbre de décision ou DTC (Decision Tree Classifier), un algorithme de forêt aléatoire (Random Forest), un algorithme de boosting type eXtreme Gradient Boost ou XGboost, un classifieur naïf de Bayes (CNB) et un algorithme de régression logistique (RL).  Les algorithmes seront mis en place et testés avec divers hyperparamètres : l'optimisation se fera avec une grille de recherche ou 'grid search'. Le volume de données ne permettra pas la réalisation d’apprentissage profond (qui utilise des réseaux de neurones artificiels) qui nécessite un beaucoup plus gros volume de données. 
+9.	Entraînement des modèles
+10.	Validation croisée
+11.	Evaluation des performances : dans ce contexte précis, l’intérêt est de minimiser le taux de faux positifs et maximaliser le taux de vrais positifs donc la métrique la plus importante sera la courbe ROC AUC (11) qui sera la métrique à optimiser ensuite le taux de faux positif, l’accuracy et la sensibilité.
+12.	Les contraintes de chacun des modèles seront décrites, les courbes d'apprentissage seront disponibles sur demande dans les Jupiter Notebook. 
+13.	 Nous indiquerons si le modèle testé est acceptable ou insuffisant. 
+14.	Nous procéderons pour les modèles dont l’option est disponible à l’extraction des variables (ou 'features') utilisées par les modèles pour les confronter à l'analyse statistique. Notez bien que les modèles utilisent le F score et pas la p value.  
+15.	Fin de la modélisation
+16.	Présentation des résultats et évaluation avec le métier : est-ce utilisable en pratique? nécessité de nouvelles données inconnues des modèles pour réaliser des tests ?, le/les modèles sélectionné(s) feront l'objet d'une revue complète du processus pour s'assurer de la qualité.  
+17.	Synthèse du PoC avec les recommandations 
+18.	Le rapport final et la documentation seront disponibles dans notre outil de gestion documentaire (Confluence) ainsi que les références. 
+Publication 
+Cette étude pourrait faire l’objet d’une publication scientifique. Dans ce cas, le code informatique sera publié sous licence et l’ensemble des données anonymisé sera publié sur un dépôt public de type GITHUB pour répondre aux standards de publication. 
+Avenir 
+Selon les résultats obtenus, cette étude pourrait être complétée par la mise en place d’une solution d’aide à la décision médicale qui serait testée et ferait l’objet d’un suivi scientifique via une nouvelle étude rétrospective d’une cohorte prospective si tel est le cas, cette nouvelle étude sera à son tour présentée au Comité d’Ethique pour discussion et approbation ; dans ce cadre, le consentement des patients sera requis. 
+
+Résumé :  L’objectif de cette étude rétrospective mono-centrique non interventionnelle est de mieux caractériser les facteurs explicatifs d’un état réfractaire primaire soit l’absence de réponse à la première ligne de traitement standard par immuno-chimiothérapie chez les patients porteurs d’un lymphome B diffus à grandes cellules (LBDGC) et de s’appuyer sur l’apprentissage automatique supervisé pour évaluer la possibilité de construire un outil d’aide à la décision médicale permettant de calculer une probabilité de survenue de l’état réfractaire primaire.  
+
+Références 
+1.	DLBCL, Sehn LH, Salles G. N Engl J Med. 2021 March 04; 384(9): 842–858.
+2.	Management of relapsed/refractory DLBCL. Sarkozy C., Sehn LH. Best Pract Res Clin Haematol. 2018 ;31(3) :209-16
+3.	Novel Therapies for relapsed and Refractory DLBCL ; Harris LJ, Patel K, Martin M. Int J Mol Sci 2020 ;21(22) :8553.
+4.	DLBCL : ESMO clinical practice guidelines for diangois, treatment and follow-up. Tilly H, Gomes da Silva M. et al. Ann Oncol. 2015 ;26 :v116-25.
+5.	Le Machine Learning avec Python. Madjid Khichane. Expert IT. 2021. Editions ENI
+6.	Deep Learning with Python. François Chollet. 2017. Manning Publications
+7.	Machine Learning. Virginie Mathivet. Expert IT. 2021. Editions ENI
+8.	Machine Learning and artificial intelligence in haematology. Shouval R., Fein J, et al. BJH. 2021,192,239-250.   
+9.	Relapsed/Refractory International Prognostic Index : an international prognostic calculator for relapsed/refractory diffuse large B-cell lymphoma. Maurer MJ, Jakobsen LH et al.AM J Haematol. 2021 ;96(5) :599-605.
+10.	Mise en œuvre des probabilités et des statistiques. Ali Mansour et Christophe Osswald. 2019. Références Sciences. Editions Ellipses. 
+11.	ROC AUC : Hanley JA, McNeil BJ. The meaning and use of the area under a receiver operating characteristic (ROC) curve. Radiology. 1982;143(1):29–36.
 
