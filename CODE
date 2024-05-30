@@ -1,11 +1,9 @@
 import pandas as pd
-import numpy as np
 import seaborn as sns
-import matplotlib.pyplot as plt
-np.random.seed(1)
 sns.set_style("darkgrid")
 tfont = {'fontsize':15, 'fontweight':'bold'}
-from sklearn.preprocessing import StandardScaler, OneHotEncoder, RobustScaler
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import OneHotEncoder, RobustScaler
 from sklearn.impute import SimpleImputer, KNNImputer
 from sklearn.compose import make_column_transformer, make_column_selector
 from sklearn import set_config
@@ -15,3 +13,24 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn .metrics import classification_report, confusion_matrix, accuracy_score
 from sklearn import metrics 
 from sklearn.metrics import precision_recall_fscore_support as score,roc_auc_score
+from sklearn.metrics import auc
+import matplotlib.pyplot as plt
+import numpy as np
+np.random.seed(1)
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
+
+------------------ 
+
+cat_col = list(X_train.select_dtypes('object'))
+float_col = list(X_train.select_dtypes(float))
+
+cat_pipe = make_pipeline(SimpleImputer(strategy='most_frequent'),
+                         OneHotEncoder(handle_unknown='ignore'))
+
+float_pipe = make_pipeline(KNNImputer())
+
+preprocessor = make_column_transformer((cat_pipe, cat_col),
+                                       (float_pipe, float_col),
+                                       remainder='passthrough')
