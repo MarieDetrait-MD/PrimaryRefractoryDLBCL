@@ -1,1 +1,99 @@
 Protocol in English
+
+Retrospective Study of the Cohort of Patients with Diffuse Large B-Cell Lymphoma from 2017 to 2022 at Grand Hôpital de Charleroi
+
+Objective: This study aims to highlight the characteristics associated with primary refractory lymphoma and to evaluate the feasibility of developing a medical decision support tool that can predict this condition by associating it with a probability.
+Joint Study by the DTSI-IT and Clinical Hematology Departments of the Grand Hospital of Charleroi
+
+Principal Investigators: Dr. Marie Detrait and Dr. Delphine Pranger
+
+Background: Diffuse large B-cell lymphoma (DLBCL) is the most common aggressive lymphoma in the adult population, accounting for 30-40% of all non-Hodgkin lymphomas (NHL) (1). Standard treatment with immunochemotherapy (R-CHOP) achieves a 60-70% remission rate; however, according to studies, 30-40% of patients are refractory or relapse rapidly within the first 6 months (1-4). Their prognosis is poor, although the emergence of innovative therapies such as targeted therapies and immunotherapy, including CAR-T cell therapy (chimeric antigen receptor T-cell), currently offers therapeutic hope for these patients (1-4). The refractory state is still not well understood. It is associated with tumor genetic abnormalities, alterations in the tumor microenvironment, and patient-related factors such as comorbidities that also influence treatment outcomes (1-4).
+Artificial intelligence includes supervised machine learning, which is of particular interest in this study as it allows for the prediction of outcomes. It is based on mathematical and statistical methods. Initially, the model receives a training dataset with variables and the desired outcome for each observation or patient. Subsequently, it will be able to estimate the outcome based on the same type of data used during training. This task can be automated and repeated. A web application (or portable application) with the most efficient algorithm(s) can then be made available (5-7).
+In hematology, there are algorithms that can estimate the risk of acute graft-versus-host disease following an allogeneic transplant, the risk of relapse of acute lymphoblastic leukemia, or the risk of developing a severe complication during intensive treatment (8).
+In the context of diffuse large B-cell lymphoma (DLBCL), there is a tool to calculate patient survival (a prognostic tool based on Cox models) for those with progressive disease (relapsed or refractory to first-line treatment). This tool is available online and is based on the study by Maurer et al. (9).
+However, to our knowledge, there is currently no model capable of predicting the probability of primary refractory DLBCL based on variables available at diagnosis and the results of a positron emission tomography/computed tomography (PET/CT) scan after two cycles of treatment.
+
+Study Location
+The study is monocentric at the Grand Hospital of Charleroi, in Charleroi, Belgium, and concerns patients treated in the hematology department between January 2017 and December 2022.
+
+Type of Study
+Non-interventional, monocentric, retrospective study.
+
+Primary Objective: 
+Feasibility of creating a supervised machine learning-based medical decision support tool to provide a probability of refractory state to first-line treatment in patients with diffuse large B-cell lymphoma (DLBCL).
+
+Secondary Objectives:
+Calculate the overall survival rate at the end of the study.
+Study the risk factors for the refractory state of DLBCL.
+Establish the survival and progression-free survival (PFS) curves of the cohort.
+Participation Criteria
+All patients over the age of 18 treated in the hematology department at GHdC between January 2017 and December 2022, diagnosed with DLBCL for the first time and not yet treated. Patients who chose to be treated at another hospital after diagnosis at GHdC will be excluded.
+
+Collaborators and Investigators
+Project idea and design: Dr. D. Pranger and Dr. M. Detrait.
+The hematology department physicians and Ms. De Prophetis (coordination nurse in hematology), who care for the patients, and clinical research associate Stéphanie Warnon, who will perform the data extraction. The director of research, Ms. Aline Gillain, also participates by providing documentary and legal support.
+Statistical analysis and the development of the models will be performed by Dr. Marie Detrait.
+
+Method: Study Plan
+Data extraction will be conducted from the database of the onco-hematology department (FileMaker software), which allows the transmission of data related to malignant pathologies to the Cancer Registry. The number of patients involved has already been calculated as 130, allowing for a study with reliable results. The list of variables to be extracted was established with Dr. D. Pranger (it is available upon request from Dr. Detrait). FileMaker software allows extraction in an Excel format.
+After data collection is completed and data quality is verified, patient data will be fully anonymized to create a training and validation set for machine learning. It will no longer be possible to identify the patients. By definition, the data will no longer be personal data.
+Statistical processing will include descriptive statistical analysis, univariate analysis (variables and target: primary refractory state) supplemented by a Cox regression model to study the primary refractory state, as well as a correlation matrix to avoid information redundancy for machine learning models.
+
+GDPR and Ethics:
+The project was discussed with the DPO, Ms. Ndumbi, who considers this project a retrospective study of a cohort from GHdC requiring approval from the hospital's Ethics Committee. The research will comply with the Declaration of Helsinki, and the protocol will be submitted to the GHdC Ethics Committee for approval.
+Since the dataset is completely anonymized and the data does not leave the Grand Hospital of Charleroi (GHdC), a specific consent form for patients is not required.
+
+Proof of Concept (PoC)
+This study will be conducted as a "Proof of Concept" (PoC) or a pilot project, which needs to function at a given time and demonstrate the feasibility of the concept.
+Field: Hematologists.
+
+Development Environment and Language:
+Anaconda with Jupyter Notebooks, an environment commonly used in data analysis. The programming language will be Python version 3.9.13 and its libraries: Pandas, Numpy, Scikit Learn, Lifelines, Scipy Stat, Seaborn, and Pingouin. Visualization will be handled by the Matplotlib and Seaborn libraries.
+The code will be available from Dr. Detrait upon reasonable request, the anonymized dataset will not be shared, will remain strictly confidential, and will be kept by Dr. Detrait in a secure location.
+
+Steps:
+
+The Excel file with all variables will be processed with Pandas into a "dataframe" and will be called the dataset.
+The progress of the project will be documented in our institutional tool, Confluence.
+Analysis and preparation of the dataset with Pandas and Numpy: semantic validation of the data to ensure data quality, detection of missing data, detection of extreme or aberrant values, and addressing class imbalance if present, followed by statistical validation of the data.
+Statistics (10): Descriptive statistics on the fields, cross-analysis and visualization with graphs; univariate analysis (variable vs. target (refractory state) with chi-square test, Kruskal-Wallis, or ANOVA depending on the type of variables) and multivariate analysis (Cox regression model and others as needed); survival and progression-free survival (PFS) curves using the Kaplan-Meier method. The statistics will answer secondary questions and analyze the risk profile of primary refractory patients.
+A correlation matrix will be created to avoid redundant data for machine learning. At the end of these steps, we will have the dataset's identity (description, size, formatting, business description of the data), field descriptions, and statistical analysis of each field. The treatment of missing data will be clearly indicated, as well as any deletion, merging, or creation of new columns if done.
+Data preparation for algorithms (Pandas): cleaning, formatting, normalization, and discretization of data if needed, and preparation of categorical variables. Pipelines (pdpipe or scikit-learn depending on the algorithms) will be used as needed (processing of continuous quantitative variables and categorical variables). The preparation of categorical variables differs for each algorithm; the processing performed will be clearly indicated for each algorithm and available in the Jupyter Notebooks.
+Split the dataset (75% for training and 25% for validation). We will use cross-validation with 'k-fold' for training and validation (the number of folds will be determined based on data analysis, usually 10 in such studies).
+Modeling and evaluation stage: creation of supervised machine learning algorithms (scikit-learn): based on literature and available experience in hematology and similar prediction questions in other fields: a Decision Tree Classifier (DTC), a Random Forest algorithm, a boosting algorithm like eXtreme Gradient Boost or XGboost, a Naive Bayes classifier (CNB), and a Logistic Regression algorithm (LR). The algorithms will be implemented and tested with various hyperparameters: optimization will be done with grid search. The data volume will not allow for deep learning (which uses artificial neural networks) that requires a much larger data volume.
+Model training
+Cross-validation
+Performance evaluation: in this specific context, the interest is to minimize the false positive rate and maximize the true positive rate, so the most important metric will be the ROC AUC curve (11), which will be the metric to optimize, followed by the false positive rate, accuracy, and sensitivity.
+The constraints of each model will be described, and the learning curves will be available upon request in the Jupyter Notebooks.
+We will indicate whether the tested model is acceptable or insufficient.
+For the models where the option is available, we will extract the variables (or 'features') used by the models to compare them with statistical analysis. Note that the models use the F score, not the p-value.
+End of modeling
+Presentation of results and evaluation with the field: is it usable in practice? Is there a need for new data unknown to the models to perform tests? The selected model(s) will undergo a complete review of the process to ensure quality.
+PoC synthesis with recommendations
+The final report and documentation will be available in our document management tool (Confluence) along with the references.
+
+Publication
+This study could be the subject of a scientific publication. In this case, the computer code will be published under a license, and the anonymized dataset will be published on a public repository such as GitHub to meet publication standards.
+
+Future
+Depending on the results obtained, this study could be complemented by the implementation of a medical decision support solution, which would be tested and subject to scientific monitoring through a new retrospective study of a prospective cohort. If this is the case, this new study will also be presented to the Ethics Committee for discussion and approval; in this context, patient consent will be required.
+
+Summary: The objective of this non-interventional, monocentric, retrospective study is to better characterize the explanatory factors of a primary refractory state, i.e., the lack of response to first-line standard immunochemotherapy treatment in patients with diffuse large B-cell lymphoma (DLBCL), and to use supervised machine learning to evaluate the possibility of constructing a medical decision support tool to calculate the probability of the occurrence of the primary refractory state.
+
+References : 
+1.	DLBCL, Sehn LH, Salles G. N Engl J Med. 2021 March 04; 384(9): 842–858.
+2.	Management of relapsed/refractory DLBCL. Sarkozy C., Sehn LH. Best Pract Res Clin Haematol. 2018 ;31(3) :209-16
+3.	Novel Therapies for relapsed and Refractory DLBCL ; Harris LJ, Patel K, Martin M. Int J Mol Sci 2020 ;21(22) :8553.
+4.	DLBCL : ESMO clinical practice guidelines for diangois, treatment and follow-up. Tilly H, Gomes da Silva M. et al. Ann Oncol. 2015 ;26 :v116-25.
+5.	Le Machine Learning avec Python. Madjid Khichane. Expert IT. 2021. Editions ENI
+6.	Deep Learning with Python. François Chollet. 2017. Manning Publications
+7.	Machine Learning. Virginie Mathivet. Expert IT. 2021. Editions ENI
+8.	Machine Learning and artificial intelligence in haematology. Shouval R., Fein J, et al. BJH. 2021,192,239-250.   
+9.	Relapsed/Refractory International Prognostic Index : an international prognostic calculator for relapsed/refractory diffuse large B-cell lymphoma. Maurer MJ, Jakobsen LH et al.AM J Haematol. 2021 ;96(5) :599-605.
+10.	Mise en œuvre des probabilités et des statistiques. Ali Mansour et Christophe Osswald. 2019. Références Sciences. Editions Ellipses. 
+11.	ROC AUC : Hanley JA, McNeil BJ. The meaning and use of the area under a receiver operating characteristic (ROC) curve. Radiology. 1982;143(1):29–36.
+
+
+
+
+
